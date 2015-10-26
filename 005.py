@@ -1,18 +1,24 @@
-def Ngram(n):
-	s = raw_input('-->')
+#005.py
+# -*- coding: utf-8 -*-
+#2015/10/26
+import sys
+
+
+def ngram(input_list, n):
 	k = 0
+	for k in range(len(input_list)-n+1):
+		print input_list[k:k+n]
 
-	word = s.split()
-	for k in range(len(word)-n+1):
-		print word[k:k+n]
-
-	print "-----------"
-
-	text  = "".join(word)
-	st = list(text)
-	for k in range(len(str)-n+1):
-		print st[k:k+n]
-
-Ngram(2)
+if __name__ == "__main__":
+	ngram(sys.argv[1], int(sys.argv[2]))
+	ngram(sys.argv[1].split(), int(sys.argv[2]))
 	
+#python 005.py "I am an NLPer" 2
+#I
+# a
+#am
+#...
+#'I', 'am']
+#['am', 'an']
+#['an', 'NLPer']
 
