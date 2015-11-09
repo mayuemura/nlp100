@@ -1,57 +1,16 @@
-#
-#
-#def func():
-#
-#    f = codecs.open("hightemp.txt","r","utf-8")
-#    i = 0
-#    fo = []
-#
-#    for line in f.readlines():
-#        for i in range(2):
-#            fo.append(codecs.open("col%d.txt" % (i+1),"w","utf-8"))
-#            fo[i].write(line[i])
-#
-#    f.close()
-#    for i in range(2):
-#        fo[i].close()
-#
-#func()
-
-
-
-
+#012.py
 # -*- coding: utf-8 -*-
+#2015/11/09
 
-import sys, codecs
+import sys
 
-f = codecs.open("hightemp.txt", "r", "utf-8")
-col1 = u""
-col2 = u""
-error = 0
+def cut(input_text):
+	with open("col1.txt", "w") as f1, open("col2.txt", "w") as f2:
+		for line in input_text:
+			a, b = line.split()[0:2]
+			f1.write(a+"\n"), f2.write(b+"\n")
 
-for line in f:
-    line.replace("\t", " ")
-    temp = line.split()
-    if len (temp) < 2:
-        error = -1
-        break
-    else:
-        col1 = col1 + temp[0] + "\n"
-        col2 = col2 + temp[1] + "\n"
+if __name__ == "__main__":
+	cut(sys.stdin)
 
-f.close()
-
-if error == -1:
-    print "Error happened"
-else:
-    fw1 = codecs.open("col1.txt", "w", "utf-8")
-    fw2 = codecs.open("col2.txt", "w", "utf-8")
-
-    fw1.write(col1)
-    fw2.write(col2)
-
-    fw1.close()
-    fw2.close()
-
- 
-
+#python 011.py hightemp.txt | python 012.py

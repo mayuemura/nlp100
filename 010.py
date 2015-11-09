@@ -6,7 +6,7 @@ import sys
 from collections import Counter
 
 def linecount(input_file):
-	with open(input_file) as f:
+	with open(input_file, "r") as f:
 		print max(i for i, line in enumerate(f, start=1))
 		#なんで通るのかわからない…
 
