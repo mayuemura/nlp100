@@ -1,26 +1,17 @@
-f = open("hightemp.txt","r")
-i = -1
-for line in f:
-    i += 1
-i += 1
-print i
-f.close()
-#24
+#010.py
+#-*- coding:utf-8 -*-
+#2015/11/09
 
+import sys
+from collections import Counter
 
-f = open("hightemp.txt","r")
-j = -1
-for j,line in enumerate(f):
-    pass
-else:
-    j += 1
-print j
-f.close()
-#24
+def linecount(input_file):
+	with open(input_file) as f:
+		print max(i for i, line in enumerate(f, start=1))
+		#なんで通るのかわからない…
 
+if __name__ == "__main__":
+	linecount(sys.argv[1])
 
-f = open("hightemp.txt","r")
-l = f.readlines()
-print len(l)
-f.close()
+#python 010.py hightemp.txt
 #24

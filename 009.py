@@ -1,43 +1,29 @@
-#import math
-#from random import shuffle
-#
-#def func():
-#	s = raw_input('-->')
-#	t = []
-#
-#	if len(s) > 4:
-#		t.append(s[0])
-#		l = list(s[1:len(s)-1])
-#		shuffle(l)
-#		t.append("".join(l))
-#		t.append(s[len(s)-1])
-#		text = "".join(t)
-#	else:
-#		t.append(s)
-#		text = "".join(t)
-#	print text
-#
-#func()
-
-
+#009.py
 # -*- coding: utf-8 -*-
+#2015/11/2
 
-import random, codecs, sys, random
+import random
 
-def Typo(words):
-    lis = words.split()
-    for i in range(len(lis)):
-        if len(lis[i]) <= 4:
-            continue
+def Typo(input_str):
+
+    words = input_str.split()
+
+    for word in words:
+
+        if len(word) <= 4:
+            yield word
+
         else:
-            a = lis[i][0]
-            b = lis[i][-1]
-            x = [lis[i][1:len(lis[i] ) -1][j] for j in range(len(lis[1:len(lis[i]) -1]))]
-            random.shuffle(x)
-            y = "".join(x)
-            lis[i] = "{}{}{}".format(a, y, b)
-    lis = " ".join(lis)
-    return lis
+			word_list = list(word)
+			mix = list(word_list[1:-1])
+			random.shuffle(mix)
+			word_list[1:-1] = mix
+			yield "".join(word_list)
 
-a = "Now I need a drink alcoholic of course after the heavy lectures involving quantum mechanics"
-print Typo(a)
+
+if __name__ == "__main__":
+	input_str = "I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
+	print " ".join(word for word in Typo(input_str))
+
+#python 009.py
+#I cdolun't bveleie that I cloud allacuty untsneardd what I was rdaenig : the pneamhenol pwoer of the hmuan mind .
